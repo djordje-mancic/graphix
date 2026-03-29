@@ -12,7 +12,7 @@
 </script>
 
 <style>
-    :global(input), :global(textarea) {
+    :global(input), :global(textarea), :global(select) {
 		background-color: #333333;
 		border-radius: 8px;
 		padding: 4px;
@@ -40,7 +40,7 @@
 	}
 </style>
 
-<div class="bg-black p-4 pt-4 rounded-2xl outline-1 drop-shadow-md" style="outline-color: #ffffff15;">
+<div class="bg-black p-4 pt-4 rounded-2xl outline-1 drop-shadow-md h-fit" style="outline-color: #ffffff15;">
     <div class="min-w-40 flex items-center gap-4">
         <div class="font-bold grow">
             {graphic}

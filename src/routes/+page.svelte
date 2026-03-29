@@ -10,7 +10,8 @@
 		top: 0;
 		height: 64px;
 		background-color: #000000;
-		filter: drop-shadow(0px 0px 12px #000000ae)
+		filter: drop-shadow(0px 0px 12px #000000ae);
+		z-index: 10;
 	}
 
 	.topbar img {
