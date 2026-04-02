@@ -6,7 +6,7 @@
 
     let Panel: Component | undefined = $state();
 	onMount(async () => {
-		Panel = (await import(`$lib/graphics/${graphic}/Panel.svelte`)).default;
+		Panel = (await import(`$graphics/${graphic}/Panel.svelte`)).default;
         console.log(Panel);
 	})
 </script>

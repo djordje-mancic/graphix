@@ -4,10 +4,17 @@ import { defineConfig, type ViteDevServer } from 'vite';
 import { main_vite } from './src/server/main.ts';
 
 const graphixServer = {
-    name: 'graphixServer',
-    configureServer(server: ViteDevServer) {
-        main_vite(server);
-    }
-}
+	name: 'graphixServer',
+	configureServer(server: ViteDevServer) {
+		main_vite(server);
+	}
+};
 
-export default defineConfig({ plugins: [tailwindcss(), sveltekit(), graphixServer] });
+export default defineConfig({
+	plugins: [tailwindcss(), sveltekit(), graphixServer],
+	server: {
+		fs: {
+			allow: ['./graphics']
+		}
+	}
+});

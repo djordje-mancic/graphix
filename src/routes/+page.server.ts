@@ -1,10 +1,14 @@
 import { readdir } from 'fs/promises';
 import type { PageServerLoad } from './$types';
 import { existsSync } from 'fs';
-
-const graphics_path = 'src/lib/graphics';
+const graphics_path = 'graphics';
 
 export const load: PageServerLoad = async () => {
+    if (!existsSync(graphics_path)) {
+        return {
+            graphics_available: []
+        }
+    }
     const dir = await readdir(graphics_path);
     const graphics_available: string[] = [];
 
