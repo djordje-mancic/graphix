@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { onMount } from 'svelte'
+	import { onMount, type Component } from 'svelte'
 	import type { PageProps } from './$types';
 	import { io } from 'socket.io-client';
 
-	let View = $state();
+	let View: Component | undefined = $state();
     const { params }: PageProps = $props();
 	// svelte-ignore state_referenced_locally
 	const graphics_id = params.id;

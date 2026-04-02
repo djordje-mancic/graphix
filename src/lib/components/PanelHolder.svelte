@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { resolve } from "$app/paths";
     import open from "$lib/assets/icons/open.svg";
-	import { onMount } from "svelte";
+	import { onMount, type Component } from "svelte";
     let { graphic } = $props();
 
-    let Panel = $state();
+    let Panel: Component | undefined = $state();
 	onMount(async () => {
 		Panel = (await import(`$lib/graphics/${graphic}/Panel.svelte`)).default;
         console.log(Panel);
@@ -40,8 +40,8 @@
 	}
 </style>
 
-<div class="bg-black p-4 pt-4 rounded-2xl outline-1 drop-shadow-md h-fit" style="outline-color: #ffffff15;">
-    <div class="min-w-40 flex items-center gap-4">
+<div class="bg-black p-2 pt-4 outline-1 h-fit rounded-md" style="outline-color: #ffffff15; filter: drop-shadow(0px 0px 6px #00000099);">
+    <div class="min-w-40 flex items-center gap-4 px-2">
         <div class="font-bold grow">
             {graphic}
         </div>
@@ -54,7 +54,7 @@
     </div>
 
     {#if Panel}
-        <div class="p-4 mt-4 rounded-md bg-neutral-900 outline-1" style="outline-color: #ffffff40;">
+        <div class="p-3 mt-4 bg-neutral-900 outline-1 rounded-xs" style="outline-color: #ffffff40;">
             <Panel/>
         </div>
     {/if}
