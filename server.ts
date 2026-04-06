@@ -6,9 +6,9 @@ const port = 3000;
 const app = express();
 const server = createServer(app);
 
-main(server);
+await main(server);
 
 app.use(handler);
 
 server.listen(port);
-console.log(`graphix open on port ${port}`)
+console.log(`graphix open on port ${port}`);

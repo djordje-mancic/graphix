@@ -5,8 +5,8 @@ import { main_vite } from './src/server/main.ts';
 
 const graphixServer = {
 	name: 'graphixServer',
-	configureServer(server: ViteDevServer) {
-		main_vite(server);
+	async configureServer(server: ViteDevServer) {
+		await main_vite(server);
 	}
 };
 

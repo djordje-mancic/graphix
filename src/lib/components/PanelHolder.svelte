@@ -1,18 +1,41 @@
 <script lang="ts">
-	import { resolve } from "$app/paths";
-    import open from "$lib/assets/icons/open.svg";
-	import { onMount, type Component } from "svelte";
-    let { graphic } = $props();
+	import { resolve } from '$app/paths';
+	import open from '$lib/assets/icons/open.svg';
+	import { onMount, type Component } from 'svelte';
+	let { graphic } = $props();
 
-    let Panel: Component | undefined = $state();
+	let Panel: Component | undefined = $state();
 	onMount(async () => {
 		Panel = (await import(`$graphics/${graphic}/Panel.svelte`)).default;
-        console.log(Panel);
-	})
+	});
 </script>
 
+<div
+	class="h-fit rounded-md bg-black p-2 pt-4 outline-1"
+	style="outline-color: #ffffff15; filter: drop-shadow(0px 0px 6px #00000099);"
+>
+	<div class="flex min-w-40 items-center gap-4 px-2">
+		<div class="grow font-bold">
+			{graphic}
+		</div>
+		<div class="grow-0">
+			<a href={resolve(`/graphics/${graphic}`)} title="Open graphic in a new tab" target="_blank">
+				<img src={open} class="h-8" alt="open" />
+			</a>
+		</div>
+	</div>
+
+	{#if Panel}
+		<div class="mt-4 rounded-xs bg-neutral-900 p-3 outline-1" style="outline-color: #ffffff40;">
+			<Panel />
+		</div>
+	{/if}
+</div>
+
 <style>
-    :global(input), :global(textarea), :global(select) {
+	:global(input),
+	:global(textarea),
+	:global(select) {
 		background-color: #333333;
 		border-radius: 8px;
 		padding: 4px;
@@ -39,23 +62,3 @@
 		padding: 3px 12px;
 	}
 </style>
-
-<div class="bg-black p-2 pt-4 outline-1 h-fit rounded-md" style="outline-color: #ffffff15; filter: drop-shadow(0px 0px 6px #00000099);">
-    <div class="min-w-40 flex items-center gap-4 px-2">
-        <div class="font-bold grow">
-            {graphic}
-        </div>
-        <div class="grow-0">
-            <a href={resolve(`/graphics/${graphic}`)} title="Open graphic in a new tab" target="_blank">
-                <img src={open} class="h-8" alt="open"/>
-            </a>
-            
-        </div>
-    </div>
-
-    {#if Panel}
-        <div class="p-3 mt-4 bg-neutral-900 outline-1 rounded-xs" style="outline-color: #ffffff40;">
-            <Panel/>
-        </div>
-    {/if}
-</div>
